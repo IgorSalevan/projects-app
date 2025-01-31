@@ -1,16 +1,21 @@
 import { http, HttpResponse } from 'msw';
+import { readFile } from 'fs/promises';
+import dotenv from 'dotenv';
 
-import projectsJson from './data/projects';
+dotenv.config();
 
-const apiProjectsPath = `${process.env.API_MOCK_URL}/projects`;
+const data = await readFile(new URL('./data/projects.json', import.meta.url), 'utf-8');
+const projectsJson = JSON.parse(data);
+
+const apiProjectsPath = `${process.env.NEXT_PUBLIC_API_MOCK_URL}/projects`;
 
 const projects = new Map([
   ...projectsJson.projects.map((project) => [project.id, project]),
 ]);
 
 export const handlers = [
-  http.get(apiProjectsPath, () => {
-    return HttpResponse.json(projects);
+  http.get(apiProjectsPath, async () => {
+    return HttpResponse.json(Array.from(projects.values()));
   }),
 
   http.get(`${apiProjectsPath}/:id`, async ({ _, params }) => {
@@ -29,7 +34,7 @@ export const handlers = [
 
   http.post(apiProjectsPath, async ({ request }) => {
     const project = await request.json();
-    projects.set(project.id, project)
+    projects.set(project.id, project);
     return HttpResponse.json(project);
   }),
 ];

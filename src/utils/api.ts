@@ -1,5 +1,5 @@
 export const getApiBaseUrl = () =>
-  process.env.API_MOCK_URL || process.env.API_URL;
+  process.env.NEXT_PUBLIC_API_MOCK_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export const fetchData = async (
   path: string | URL,
