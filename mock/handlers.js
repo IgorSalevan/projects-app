@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { http, HttpResponse, delay } from 'msw';
 import { readFile } from 'fs/promises';
 import dotenv from 'dotenv';
 
@@ -47,18 +47,19 @@ export const handlers = [
   http.post(apiProjectsPath, async ({ request }) => {
     const project = await request.json();
     projects.set(project.id, project);
-    return HttpResponse.json(project, {status: 201});
+    return HttpResponse.json(project, { status: 201 });
   }),
 
   http.put(`${apiProjectsPath}/:id`, async ({ request, params }) => {
-    const {id} = params;
+    const { id } = params;
     const project = await request.json();
     projects.set(id, project);
-    return HttpResponse.json(project, {status: 204});
+    return HttpResponse.json(project, { status: 204 });
   }),
 
   // Favourites
-  http.get(apiFavouritesPath, () => {
+  http.get(apiFavouritesPath, async () => {
+    await delay(serverResponseTime());
     return HttpResponse.json(Array.from(favourites.values()));
   }),
 
@@ -75,7 +76,7 @@ export const handlers = [
     const project = projects.get(projectId);
     favourites.set(projectId, project);
 
-    return HttpResponse.json(project, {status: 201});
+    return HttpResponse.json(project, { status: 201 });
   }),
 
   http.delete(`${apiFavouritesPath}:projectId`, ({ params }) => {
@@ -84,6 +85,15 @@ export const handlers = [
     if (favourites.delete(projectId)) {
     }
 
-    return HttpResponse.json({message: 'Project removed from favourites'}, {status: 204});
+    return HttpResponse.json(
+      { message: 'Project removed from favourites' },
+      { status: 204 }
+    );
   }),
 ];
+
+const serverResponseTime = () => {
+  let min = 0.5;
+  let max = 1.5;
+  return (Math.floor(Math.random() * (max - min + 1)) + min) * 1000;
+}
