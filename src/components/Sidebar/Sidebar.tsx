@@ -21,13 +21,7 @@ const Sidebar: FC = () => {
       });
   }, []);
 
-  return (
-    <>
-      {isMobile ? <SidebarMobile /> : <SidebarDesktop />}
-
-      {/* Sidebar Drawer for mobile */}
-    </>
-  );
+  return <>{isMobile ? <SidebarMobile /> : <SidebarDesktop />}</>;
 };
 
 export default Sidebar;

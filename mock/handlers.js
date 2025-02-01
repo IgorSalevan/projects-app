@@ -23,6 +23,12 @@ const favourites = new Map([
 
 export const handlers = [
   http.get(apiProjectsPath, () => {
+    if (takeAChance()) {
+      return HttpResponse.json(null, {
+        status: 504,
+      });
+    }
+
     return HttpResponse.json(Array.from(projects.values()));
   }),
 
@@ -67,9 +73,13 @@ export const handlers = [
     const { projectId } = await request.json();
 
     if (!projectId) {
-      return res(
-        ctx.status(400),
-        ctx.json({ error: 'Project ID is required' })
+      return HttpResponse.json(
+        {
+          error: 'Project ID is required',
+        },
+        {
+          status: 400,
+        }
       );
     }
 
@@ -96,4 +106,6 @@ const serverResponseTime = () => {
   let min = 0.5;
   let max = 1.5;
   return (Math.floor(Math.random() * (max - min + 1)) + min) * 1000;
-}
+};
+
+const takeAChance = () => Math.round(Math.random());
