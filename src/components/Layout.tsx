@@ -23,7 +23,7 @@ export default function Layout({ children }: ILayoutProps) {
   return (
     <div className="flex h-screen bg-white">
       <Sidebar />
-      <main className="flex-1 p-5 box-border">{children}</main>
+      <main className="flex-1 pl-0 sm:p-5 box-border">{children}</main>
       <ToastContainer position="bottom-right" autoClose={3000} />
     </div>
   );

@@ -4,6 +4,7 @@ import { IProject } from '@/types';
 import { toast } from 'react-toastify';
 import { FC, useEffect } from 'react';
 import { useStore } from '@/store';
+import ProjectsTable from '@/components/ProjectsTable';
 
 interface IProps {
   projects: IProject[];
@@ -22,7 +23,7 @@ const Projects: FC<IProps> = ({ projects: initProjects, error }) => {
     }
   }, [initProjects, error]);
 
-  return <div className="flex flex-col items-center justify-center"></div>;
+  return <ProjectsTable />;
 };
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {

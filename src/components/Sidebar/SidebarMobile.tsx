@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Drawer } from '@mui/material';
 import SidebarContent from './SidebarContent';
-import { BurgerMenuIcon } from './BurgerMenuIcon';
+import { BurgerMenu } from './BurgerMenu';
 
 const SidebarMobile: FC = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -9,7 +9,7 @@ const SidebarMobile: FC = () => {
 
   return (
     <>
-      <BurgerMenuIcon onClick={toggleSidebar} isOpen={mobileOpen} />
+      <BurgerMenu onClick={toggleSidebar} isOpen={mobileOpen} />
       <Drawer
         variant="temporary"
         open={mobileOpen}

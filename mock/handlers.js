@@ -66,7 +66,7 @@ export const handlers = [
   // Favourites
   http.get(apiFavouritesPath, async () => {
     await delay(serverResponseTime());
-    return HttpResponse.json(Array.from(favourites.values()));
+    return HttpResponse.json(Object.fromEntries(favourites));
   }),
 
   http.post(apiFavouritesPath, async ({ request }) => {
