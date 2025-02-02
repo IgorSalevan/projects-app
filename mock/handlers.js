@@ -60,7 +60,7 @@ export const handlers = [
     const { id } = params;
     const project = await request.json();
     projects.set(id, project);
-    return HttpResponse.json(project, { status: 204 });
+    return HttpResponse.json(project, { status: 200 });
   }),
 
   // Favourites
@@ -70,6 +70,8 @@ export const handlers = [
   }),
 
   http.post(apiFavouritesPath, async ({ request }) => {
+    await delay(serverResponseTime());
+
     const { projectId } = await request.json();
 
     if (!projectId) {
@@ -89,22 +91,22 @@ export const handlers = [
     return HttpResponse.json(project, { status: 201 });
   }),
 
-  http.delete(`${apiFavouritesPath}:projectId`, ({ params }) => {
+  http.delete(`${apiFavouritesPath}/:projectId`, async ({ params }) => {
+    await delay(serverResponseTime());
     const { projectId } = params;
 
-    if (favourites.delete(projectId)) {
-    }
+    favourites.delete(projectId);
 
     return HttpResponse.json(
       { message: 'Project removed from favourites' },
-      { status: 204 }
+      { status: 200 }
     );
   }),
 ];
 
 const serverResponseTime = () => {
   let min = 0.5;
-  let max = 1.5;
+  let max = 1;
   return (Math.floor(Math.random() * (max - min + 1)) + min) * 1000;
 };
 

@@ -11,16 +11,14 @@ import {
 import { Edit as EditIcon } from '@mui/icons-material';
 import { useStore } from '@/store';
 import { FC } from 'react';
-import FavouriteIcon from '../Icons/Favourite';
+import ToggleFavouriteIcon from '../ToggleFavouriteIcon';
 
 const ProjectsTableMobile: FC = () => {
-  const { favourites, projects, toggleFavourite } = useStore((state) => state);
+  const { projects } = useStore((state) => state);
 
-  if (!favourites.loaded || !projects.loaded) {
+  if (!projects.loaded) {
     return <CircularProgress className="m-auto" />;
   }
-
-  const favouriteProjects = favourites.data;
 
   return (
     <TableContainer>
@@ -38,10 +36,8 @@ const ProjectsTableMobile: FC = () => {
             <TableRow key={project.id}>
               <TableCell>{project.name}</TableCell>
               <TableCell>{project.manager}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => toggleFavourite(project.id)}>
-                  <FavouriteIcon isFavourite={project.id in favouriteProjects} />
-                </IconButton>
+              <TableCell size='small' padding='none' align='center'>
+                <ToggleFavouriteIcon projectId={project.id}/>
               </TableCell>
               <TableCell>
                 <IconButton>

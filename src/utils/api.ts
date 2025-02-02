@@ -20,3 +20,11 @@ export const postRequestData = async (
     },
     body: JSON.stringify(body),
   });
+
+  export const deleteRequestData = async (
+    path: string,
+  ): Promise<Response> =>
+    await fetchData(path, {
+      method: 'delete',
+    });
+  

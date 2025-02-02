@@ -17,7 +17,7 @@ interface IStoreState {
 interface IStoreAction {
   setProjects: (projects: IProject[]) => void;
   setFavourites: (favourites: FavouriteProjects) => void;
-  toggleFavourite: (projectId: string) => void;
+  toggleFavourite: (projectId: string) => Promise<StoreType>;
   setError: (error: string) => void;
 }
 
@@ -41,19 +41,28 @@ export const useStore = create<StoreType>()(
       const favouritesProjects = get().favourites.data;
       if (projectId in favouritesProjects) {
         delete favouritesProjects[projectId];
-        return set({favourites: {
-          data: favouritesProjects,
-          loaded: true,
-        }})
+        return set({
+          favourites: {
+            data: favouritesProjects,
+            loaded: true,
+          },
+        });
       }
-      console.log(favouritesProjects)
+      const projects = get().projects.data;
+      const index = projects.findIndex(({ id }) => id === projectId);
+      if (index !== -1) {
+        return set({
+          favourites: {
+            data: {
+              ...favouritesProjects,
+              [projectId]: { ...projects[index] },
+            },
+            loaded: true,
+          },
+        });
+      }
+      return;
     },
-
-      // set(() => {
-      //   console.log(projectId);
-      //   console.log(store.favourites);
-      //   return ({favourites: {}})
-      // }),
     error: '',
     setError: (error: string) => set({ error }),
   }))
