@@ -1,17 +1,16 @@
 'use client';
 
 import { FC, useEffect } from 'react';
-import { useMediaQuery, useTheme } from '@mui/material';
 
 import SidebarDesktop from './SidebarDesktop';
 import SidebarMobile from './SidebarMobile';
 import { useStore } from '@/store';
 import { getRequestData } from '@/utils/api';
+import { useDetectMobile } from '@/hooks/useDetectMobile';
 
 const Sidebar: FC = () => {
   const { setFavourites } = useStore((state) => state);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useDetectMobile();
 
   useEffect(() => {
     getRequestData('favourites')

@@ -1,27 +1,8 @@
 import { FavouriteProjects, IProject } from '@/types';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { StoreType } from './types';
 
-interface IStoreState {
-  projects: {
-    data: IProject[];
-    loaded: boolean;
-  };
-  favourites: {
-    data: FavouriteProjects;
-    loaded: boolean;
-  };
-  message: string;
-}
-
-interface IStoreAction {
-  setProjects: (projects: IProject[]) => void;
-  setFavourites: (favourites: FavouriteProjects) => void;
-  toggleFavourite: (projectId: string) => Promise<StoreType>;
-  setMessage: (message: string) => void;
-}
-
-export type StoreType = IStoreState & IStoreAction;
 
 export const useStore = create<StoreType>()(
   devtools((set, get) => ({

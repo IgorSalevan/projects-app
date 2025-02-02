@@ -11,11 +11,11 @@ const SidebarMobile: FC = () => {
     <>
       <BurgerMenu onClick={toggleSidebar} isOpen={mobileOpen} />
       <Drawer
-        variant="temporary"
+        variant='temporary'
         open={mobileOpen}
         onClose={toggleSidebar}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { md: 'block', lg: 'none' },
           '& .MuiDrawer-paper': {
             width: '240px',
           },

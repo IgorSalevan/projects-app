@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import { useMediaQuery, useTheme } from '@mui/material';
-import ProjectsTableMobile from './ProjectsTableMobile';
-import ProjectsTableDesktop from './ProjectsTableDesktop';
+import { CircularProgress } from '@mui/material';
+import { useStore } from '@/store';
+import { useDetectMobile } from '@/hooks/useDetectMobile';
+import ProjectsTableComponent from './ProjectsTableComponent';
 
 const ProjectsTable: FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const ProjectsComponent = isMobile
-    ? ProjectsTableMobile
-    : ProjectsTableDesktop;
+  const isMobile = useDetectMobile();
+  const { projects } = useStore((state) => state);
 
-  return <ProjectsComponent />;
+  if (!projects.loaded) {
+    return <CircularProgress className='m-auto' />;
+  }
+
+  return <ProjectsTableComponent projects={projects} isMobile={isMobile} />;
 };
 
 export default ProjectsTable;

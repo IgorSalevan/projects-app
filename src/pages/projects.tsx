@@ -30,7 +30,6 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   try {
     const response = await getRequestData('projects');
     if (!response.ok) {
-      console.log(response)
       throw new Error(`Code: ${response.status} - ${response.statusText}`);
     }
 

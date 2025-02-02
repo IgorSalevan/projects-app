@@ -1,4 +1,4 @@
-import { createServer, createMiddleware } from '@mswjs/http-middleware';
+import { createMiddleware } from '@mswjs/http-middleware';
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -6,14 +6,6 @@ import cors from 'cors';
 dotenv.config();
 
 import { handlers } from './handlers.js';
-
-// export const server = createServer(...handlers);
-
-// const port = URL.parse(process.env.NEXT_PUBLIC_API_MOCK_URL).port || 9090;
-
-// server.listen(port, () => {
-//   console.log(`Mock server listens on ${process.env.NEXT_PUBLIC_API_MOCK_URL}`);
-// });
 
 const port = URL.parse(process.env.NEXT_PUBLIC_API_MOCK_URL).port || 9090;
 

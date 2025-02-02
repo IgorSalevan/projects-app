@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const sx: SxProps = {
-  display: { xs: 'flex', sm: 'none' },
+  display: { xs: 'flex', lg: 'none' },
   alignItems: 'flex-start',
   color: 'black',
   width: 40,

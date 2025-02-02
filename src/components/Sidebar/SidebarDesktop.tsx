@@ -3,9 +3,9 @@ import SidebarContent from './SidebarContent';
 
 const SidebarDesktop = () => (
   <Drawer
-    variant="permanent"
+    variant='permanent'
     sx={{
-      display: { xs: 'none', sm: 'block' },
+      display: {xs: 'none',  md: 'block' },
       '& .MuiDrawer-paper': {
         boxSizing: 'border-box',
         width: '240px',

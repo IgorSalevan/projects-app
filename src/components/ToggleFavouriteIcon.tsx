@@ -62,7 +62,7 @@ export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
   }
 
   return (
-    <IconButton onClick={handleToggle} disabled={!loaded}>
+    <IconButton onClick={handleToggle} disabled={!loaded} sx={{p: 0}}>
       <FavouriteIcon isFavourite={isFavourite} />
     </IconButton>
   );

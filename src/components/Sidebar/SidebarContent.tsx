@@ -12,7 +12,7 @@ const SidebarContent: FC = () => {
   const { favourites } = useStore();
 
   if (!favourites.loaded) {
-    return <CircularProgress className="m-auto" />;
+    return <CircularProgress className='m-auto' />;
   }
 
   const favouriteProjects = Object.values(favourites.data);

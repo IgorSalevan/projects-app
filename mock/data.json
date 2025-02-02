@@ -4,24 +4,24 @@
       "id": "project_a",
       "name": "Project A",
       "description": "The description of project A",
-      "startDate": "2025-01-01T00:00:000Z",
-      "endDate": "2025-01-01T23:59:000Z",
+      "startDate": "2025-01-01T00:00:00.000Z",
+      "endDate": "2025-01-01T23:59:00.000Z",
       "manager": "John Doe"
     },
     {
       "id": "project_b",
       "name": "Project B",
       "description": "The description of project B",
-      "startDate": "2025-01-01T00:00:000Z",
-      "endDate": "2025-01-01T23:59:000Z",
+      "startDate": "2025-01-01T00:00:00.000Z",
+      "endDate": "2025-01-01T23:59:00.000Z",
       "manager": "Jane Doe"
     },
     {
       "id": "project_c",
       "name": "Project C",
       "description": "The description of project B",
-      "startDate": "2025-01-01T00:00:000Z",
-      "endDate": "2025-01-01T23:59:000Z",
+      "startDate": "2025-01-01T00:00:00.000Z",
+      "endDate": "2025-01-01T23:59:00.000Z",
       "manager": "Jane Doe"
     }
   ],
