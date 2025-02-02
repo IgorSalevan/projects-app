@@ -20,8 +20,9 @@ const getCellSx = (minBreakpoint = 'sm', maxBreakpoint = 'md'): SxProps => ({
   },
 });
 
-const sxCell = getCellSx('xs', 'md')
-const sxCellId = getCellSx('xs', 'sm')
+const sxCell = getCellSx('xs', 'md');
+const sxCellId = getCellSx('xs', 'sm');
+const sxRow: SxProps = { backgroundColor: '#f5f5f5' };
 
 import { IProjectsStoreSlice } from '@/store/types';
 
@@ -32,15 +33,10 @@ export interface IProps {
 
 const ProjectsTableMobile: FC<IProps> = ({ projects }) => (
   <TableContainer>
-    <Table>
+    <Table size="small" sx={{ td: { borderBottom: '3px solid white' } }}>
       <TableHead>
-        <TableRow>
-          <TableCell sx={{
-  display: {
-    xs: 'none',
-    sm: 'table-cell',
-  },
-}}>Project ID</TableCell>
+        <TableRow sx={{ backgroundColor: '#e3e3e3' }}>
+          <TableCell sx={sxCellId}>Project ID</TableCell>
           <TableCell>Project Name</TableCell>
           <TableCell sx={sxCell}>Start Date</TableCell>
           <TableCell sx={sxCell}>End Date</TableCell>
@@ -51,11 +47,15 @@ const ProjectsTableMobile: FC<IProps> = ({ projects }) => (
       </TableHead>
       <TableBody>
         {projects.data.map((project) => (
-          <TableRow key={project.id}>
+          <TableRow key={project.id} sx={sxRow}>
             <TableCell sx={sxCellId}>{project.id}</TableCell>
             <TableCell>{project.name}</TableCell>
-            <TableCell sx={{...sxCell, whiteSpace: 'nowrap'}}>{formatDate(project.startDate)}</TableCell>
-            <TableCell sx={{...sxCell, whiteSpace: 'nowrap'}}>{formatDate(project.endDate)}</TableCell>
+            <TableCell sx={{ ...sxCell, whiteSpace: 'nowrap' }}>
+              {formatDate(project.startDate)}
+            </TableCell>
+            <TableCell sx={{ ...sxCell, whiteSpace: 'nowrap' }}>
+              {formatDate(project.endDate)}
+            </TableCell>
             <TableCell>{project.manager}</TableCell>
             <TableCell padding="none" align="center">
               <ToggleFavouriteIcon projectId={project.id} />

@@ -12,18 +12,18 @@ const SidebarContent: FC = () => {
   const { favourites } = useStore();
 
   if (!favourites.loaded) {
-    return <CircularProgress className='m-auto' />;
+    return <CircularProgress className="m-auto" />;
   }
 
   const favouriteProjects = Object.values(favourites.data);
-  
+
   return (
     <>
       <Typography variant="h6" className="pt-16 text-center">
         Favourite Projects
       </Typography>
       {favouriteProjects.length > 0 ? (
-        <List sx={{ listStyleType: 'disc' }}>
+        <List dense sx={{ listStyleType: 'disc' }}>
           {favouriteProjects.map(({ id, name }) => (
             <ListItemButton key={id} component="a" sx={{ pl: 8 }}>
               <ListItemText
@@ -34,7 +34,9 @@ const SidebarContent: FC = () => {
           ))}
         </List>
       ) : (
-        <Typography className='pt-12 text-gray-400 text-center'>Add to some...</Typography>
+        <Typography className="pt-12 text-gray-400 text-center">
+          Add to some...
+        </Typography>
       )}
     </>
   );

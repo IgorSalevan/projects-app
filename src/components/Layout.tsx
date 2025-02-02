@@ -25,7 +25,11 @@ export default function Layout({ children }: ILayoutProps) {
   return (
     <div className="flex h-screen bg-white">
       <Sidebar />
-      <Box component='main' className='flex-1 pl-0 md:p-5 box-border' sx={{ml: isMobile ? 0 : 30}}>
+      <Box
+        component="main"
+        className="flex-1 pl-0 md:p-5 box-border"
+        sx={{ ml: isMobile ? 0 : 30 }}
+      >
         {children}
       </Box>
       <ToastContainer position="bottom-right" autoClose={2000} />

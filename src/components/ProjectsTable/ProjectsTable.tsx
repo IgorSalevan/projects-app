@@ -9,7 +9,7 @@ const ProjectsTable: FC = () => {
   const { projects } = useStore((state) => state);
 
   if (!projects.loaded) {
-    return <CircularProgress className='m-auto' />;
+    return <CircularProgress className="m-auto" />;
   }
 
   return <ProjectsTableComponent projects={projects} isMobile={isMobile} />;
