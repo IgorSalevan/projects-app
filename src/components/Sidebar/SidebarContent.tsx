@@ -16,6 +16,7 @@ const SidebarContent: FC = () => {
   }
 
   const favouriteProjects = Object.values(favourites.data);
+  
   return (
     <>
       <Typography variant="h6" className="pt-16 text-center">

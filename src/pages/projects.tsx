@@ -12,14 +12,14 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = ({ projects: initProjects, error }) => {
-  const {setProjects, setError} = useStore((state) => state);
+  const {setProjects, setMessage} = useStore((state) => state);
 
   useEffect(() => {
     setProjects(initProjects);
 
     if (error) {
       toast.error(error);
-      setError(error);
+      setMessage(error);
     }
   }, [initProjects, error]);
 

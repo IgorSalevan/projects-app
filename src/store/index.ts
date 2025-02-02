@@ -11,14 +11,14 @@ interface IStoreState {
     data: FavouriteProjects;
     loaded: boolean;
   };
-  error: string;
+  message: string;
 }
 
 interface IStoreAction {
   setProjects: (projects: IProject[]) => void;
   setFavourites: (favourites: FavouriteProjects) => void;
   toggleFavourite: (projectId: string) => Promise<StoreType>;
-  setError: (error: string) => void;
+  setMessage: (message: string) => void;
 }
 
 export type StoreType = IStoreState & IStoreAction;
@@ -63,7 +63,7 @@ export const useStore = create<StoreType>()(
       }
       return;
     },
-    error: '',
-    setError: (error: string) => set({ error }),
+    message: '',
+    setMessage: (message: string) => set({ message }),
   }))
 );

@@ -11,20 +11,19 @@ interface ILayoutProps {
 }
 
 export default function Layout({ children }: ILayoutProps) {
-  const { error, setError } = useStore((store) => store);
+  const { message, setMessage } = useStore((store) => store);
 
   useEffect(() => {
-    if (error) {
-      console.log(error);
-      setError('');
+    if (message) {
+      setMessage('');
     }
-  }, [error]);
+  }, [message]);
 
   return (
     <div className="flex h-screen bg-white">
       <Sidebar />
       <main className="flex-1 pl-0 sm:p-5 box-border">{children}</main>
-      <ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={2000} />
     </div>
   );
 }

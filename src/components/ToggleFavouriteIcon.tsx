@@ -2,6 +2,7 @@
 
 import { CircularProgress, IconButton } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useStore } from '@/store';
 import FavouriteIcon from './Icons/Favourite';
 import { deleteRequestData, postRequestData } from '@/utils/api';
@@ -11,7 +12,9 @@ interface IProps {
 }
 
 export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
-  const { favourites, toggleFavourite } = useStore((state) => state);
+  const { favourites, toggleFavourite, setMessage } = useStore(
+    (state) => state
+  );
   const [loaded, setLoaded] = useState(favourites.loaded);
 
   const favouriteProjects = favourites.data;
@@ -41,6 +44,11 @@ export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
       })
       .then(() => {
         setLoaded(true);
+        const message = `${
+          isFavourite ? 'Removed from' : 'Added to'
+        } Favourites`;
+        toast.success(message);
+        setMessage(message);
       });
   };
 
