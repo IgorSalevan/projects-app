@@ -4,7 +4,7 @@ import { IProject } from '@/types';
 import { toast } from 'react-toastify';
 import { FC, useEffect } from 'react';
 import { useStore } from '@/store';
-import ProjectsTable from '@/components/ProjectsTable';
+import ProjectsTable from '@/modules/Projects/ProjectsTable';
 import { useDetectMobile } from '@/hooks/useDetectMobile';
 import { CreateButton } from '@/components/Buttons/CreateButton';
 import { Box } from '@mui/material';

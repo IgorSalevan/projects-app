@@ -11,7 +11,7 @@ This project is a test assignment for **FrontEnd Assessment v3**. It is built us
 - **react-toastify** 
 - **Material-UI**
 - **Tailwind CSS**
-- **Mock Server** (for API data)
+- **mswjs** (mock server for API data)
 - **Material-UI DatePicker** (for date selection)
 
 ## Features
@@ -54,3 +54,38 @@ A video demonstrating the application will be provided.
 
 Everything is set up! Now you can explore the app and test its functionality.
 If you have any questions, feel free to ask! 
+
+## Project Structure
+
+The application follows **Next.js file-based routing**, ensuring that pages match the required URLs.  
+Each page-specific logic is placed in corresponding **modules** inside the `/src/modules` folder.
+
+### Folder Structure:
+
+ 📂 src  
+  ┣ 📂 components            # Reusable UI components  
+  ┣ 📂 hooks                 # Custom React hooks  
+  ┃
+  ┣ 📂 modules               # Page-specific logic modules  
+  ┃ ┣ 📂 Projects            # Module for Projects (main) page /projects route  
+  ┃ ┗ 📂 Project      
+  ┃   ┣ 📂 New               # Modle for creating a New Project /projects/new  
+  ┃   ┣ 📂 Details           # View project details, route /projects/:id
+  ┃   ┗ 📂 Edit              # Edit Project page, route /projects/:id/edit
+  ┃
+  ┣ 📂 pages                 # Next.js pages (routes)
+  ┃ ┣ 📂 projects
+  ┃ ┃ ┣ 📂 [projectId]
+  ┃ ┃ ┣ ┗ 📜 edit.tsx        # Edit Project
+  ┃ ┃ ┣ 📜 [projectId].tsx   # Project Details  
+  ┃ ┃ ┗ 📜 new..tsx          # Create New Project
+  ┃ ┗ projects.tsx           # Projects List
+  ┃
+  ┣ 📂 styles                # Global styles (Tailwind, MUI overrides)  
+  ┣ 📂 utils                 # Utility functions  
+  ┗ 📂 store                 # Application state (Zustand) 
+ 
+ 📂 mock                     # Configuration files (e.g., API URLs)  
+  ┣ 📜 data.json             # A mocked date in a json file 
+  ┗ 📜 handlers.js           # Handlers to process REST API requests
+  

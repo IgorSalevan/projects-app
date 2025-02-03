@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { formatDate } from '@/utils/date';
-import FavouriteButton from '../Buttons/FavouriteButton';
+import FavouriteButton from '@/components/Buttons/FavouriteButton';
 
 const getCellSx = (minBreakpoint = 'sm', maxBreakpoint = 'md'): SxProps => ({
   display: {
@@ -26,7 +26,7 @@ const sxRow: SxProps = { backgroundColor: grey[50] };
 import { IProjectsStoreSlice } from '@/store/types';
 import { ROUTES } from '@/utils/routes';
 import { useRouter } from 'next/router';
-import { ButtonEditProject } from '../Buttons/ButtonEditProject';
+import { ButtonEditProject } from '@/components/Buttons/ButtonEditProject';
 
 export interface IProps {
   projects: IProjectsStoreSlice;

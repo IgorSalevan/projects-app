@@ -4,8 +4,8 @@ import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { BaseSyntheticEvent, FC, useEffect } from 'react';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import { ProjectFormFields } from './FormProjectFields';
-import { Button } from './Buttons/Button';
+import { ProjectFormFields } from '@/components/FormProjectFields';
+import { Button } from '@/components/Buttons/Button';
 import { toast } from 'react-toastify';
 import { useStore } from '@/store';
 
@@ -29,7 +29,7 @@ export const FormProjectEdit: FC<IProps> = ({ project = {} as IProject }) => {
     e?.preventDefault();
 
     if (JSON.stringify(project) === JSON.stringify(data)) {
-      toast.warning(`The form was not touched`);
+      toast.warning('Nothing to update');
       return router.push(ROUTES.projects);
     }
 

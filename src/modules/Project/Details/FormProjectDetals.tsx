@@ -1,14 +1,14 @@
+import { Box } from '@mui/material';
 import { IProject } from '@/types';
 import { FC, useEffect } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { ProjectFormFields } from './FormProjectFields';
-import { Box } from '@mui/material';
-import { Button } from './Buttons/Button';
 import { useRouter } from 'next/router';
-import { ROUTES } from '@/utils/routes';
-import FavouriteButton from './Buttons/FavouriteButton';
+import { FormProvider, useForm } from 'react-hook-form';
+import { ProjectFormFields } from '@/components/FormProjectFields';
+import { Button } from '@/components/Buttons/Button';
+import FavouriteButton from '@/components/Buttons/FavouriteButton';
+import { ButtonEditProject } from '@/components/Buttons/ButtonEditProject';
 import { useDetectMobile } from '@/hooks/useDetectMobile';
-import { ButtonEditProject } from './Buttons/ButtonEditProject';
+import { ROUTES } from '@/utils/routes';
 
 interface IProps {
   project?: IProject;

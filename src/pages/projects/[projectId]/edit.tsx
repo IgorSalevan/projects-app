@@ -1,5 +1,5 @@
+import { FormProjectEdit } from '@/modules/Project/Edit/FormProjectEdit';
 import { FormProjectContainer } from '@/components/FormProjectContainer';
-import { FormProjectEdit } from '@/components/FormProjectEdit';
 
 const EditProject = () => (
     <FormProjectContainer>
