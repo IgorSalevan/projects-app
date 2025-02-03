@@ -11,6 +11,7 @@ import { DateTime } from 'luxon';
 interface IProps extends IFieldProps {
   format?: string;
   disableOpenPicker?: boolean;
+  disabled?: boolean
 }
 
 const FormFieldDatePicker: FC<IProps> = ({
@@ -20,6 +21,7 @@ const FormFieldDatePicker: FC<IProps> = ({
   fullWidth = false,
   disableOpenPicker = true,
   required = true,
+  disabled = false,
 }) => {
   const isMobile = useDetectMobile();
   const { control } = useFormContext();
@@ -30,6 +32,7 @@ const FormFieldDatePicker: FC<IProps> = ({
         <Controller
           name={id}
           control={control}
+          disabled
           rules={{
             required: required ? `${label} is required` : false,
           }}
@@ -40,6 +43,7 @@ const FormFieldDatePicker: FC<IProps> = ({
               format={format}
               value={field.value ? DateTime.fromISO(field.value) : null}
               disableOpenPicker={isMobile ? disableOpenPicker : false}
+              disabled={disabled}
               sx={{
                 ['& fieldset']: {
                   borderRadius: 0,

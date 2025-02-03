@@ -1,6 +1,6 @@
 'use client';
 
-import { CircularProgress, IconButton } from '@mui/material';
+import { Box, CircularProgress, IconButton } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useStore } from '@/store';
@@ -11,7 +11,7 @@ interface IProps {
   projectId: string;
 }
 
-export const FavouriteBtton: FC<IProps> = ({ projectId }) => {
+export const FavouriteButton: FC<IProps> = ({ projectId }) => {
   const { favourites, toggleFavourite, setMessage } = useStore(
     (state) => state
   );
@@ -53,10 +53,12 @@ export const FavouriteBtton: FC<IProps> = ({ projectId }) => {
 
   if (!loaded) {
     return (
-      <CircularProgress
-        size={20}
-        sx={{ display: 'flex', justifySelf: 'center' }}
-      />
+      <Box width={40} display='flex' justifyContent='center'>
+        <CircularProgress
+          size={20}
+          sx={{ display: 'flex', justifySelf: 'center' }}
+        />
+      </Box>
     );
   }
 
@@ -67,4 +69,4 @@ export const FavouriteBtton: FC<IProps> = ({ projectId }) => {
   );
 };
 
-export default FavouriteBtton;
+export default FavouriteButton;

@@ -19,7 +19,7 @@
     {
       "id": "project_c",
       "name": "Project C",
-      "description": "The description of project B",
+      "description": "The description of project C",
       "startDate": "2025-01-01T00:00:00.000Z",
       "endDate": "2025-01-01T23:59:00.000Z",
       "manager": "Jane Doe"

@@ -8,14 +8,21 @@ import {
 } from '@mui/material';
 import { useStore } from '@/store';
 
+import { useRouter } from 'next/router';
+import { ROUTES } from '@/utils/routes';
+
 const SidebarContent: FC = () => {
   const { favourites } = useStore();
+  const router = useRouter();
 
   if (!favourites.loaded) {
     return <CircularProgress className="m-auto" />;
   }
 
   const favouriteProjects = Object.values(favourites.data);
+
+  const handleViewProgect = (id: string) => () =>
+    router.push(ROUTES.project(id));
 
   return (
     <>
@@ -28,6 +35,7 @@ const SidebarContent: FC = () => {
             <ListItemButton key={id} component="a" sx={{ pl: 8 }}>
               <ListItemText
                 primary={name}
+                onClick={handleViewProgect(id)}
                 sx={{ display: 'list-item', pl: 0 }}
               />
             </ListItemButton>

@@ -25,7 +25,6 @@ const FormTextField: FC<IProps> = ({
     formState: { errors },
   } = useFormContext();
 
-  console.log(id, pattern)
   return (
     <FormFieldLabel label={label}>
       <TextField

@@ -5,20 +5,13 @@ import {
   FormProvider,
   FieldValues,
   useForm,
-  ValidationRule,
 } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useStore } from '@/store';
 import { IProject } from '@/types';
 import { ROUTES } from '@/utils/routes';
-import FormFieldText from '@/components/Form/FormFieldText';
 import { Button } from '@/components/Buttons/Button';
-import FormFieldDatePicker from '@/components/Form/FormFieldDatePicker';
-
-const validatorId: ValidationRule<RegExp> = {
-  value: /^[a-zA-Z0-9]+$/,
-  message: 'Only letters & numbers (no spaces)',
-};
+import { ProjectFormFields } from '@/components/ProjectFormFields';
 
 const NewProject = () => {
   const router = useRouter();
@@ -47,20 +40,7 @@ const NewProject = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="xs:w-full lg:w-10/12 pt-12"
       >
-        <FormFieldText id="id" label="Project ID" validator={validatorId} />
-        <FormFieldText id="name" label="Project Name" />
-        <FormFieldText
-          id="description"
-          label="Description"
-          required={false}
-          multiline
-          rows={4}
-          fullWidth
-        />
-        <FormFieldDatePicker id="startDate" label="Start Date" />
-        <FormFieldDatePicker id="endDate" label="End Date" />
-        <FormFieldText id="manager" label="Manager" />
-
+        <ProjectFormFields />
         <Box
           sx={{
             display: 'flex',

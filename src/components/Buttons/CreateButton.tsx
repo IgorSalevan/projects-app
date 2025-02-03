@@ -16,10 +16,6 @@ export const CreateButton: FC<IProps> = ({ sx: sxMobile }) => {
   const router = useRouter();
   const handleAddNewProject = () => router.push(ROUTES.newProject);
 
-  if (router.route !== ROUTES.projects) {
-    return null;
-  }
-
   if (isMobile) {
     return (
       <IconButton sx={sxMobile} onClick={handleAddNewProject}>
