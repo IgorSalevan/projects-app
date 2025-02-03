@@ -23,11 +23,11 @@ const favourites = new Map([
 
 export const handlers = [
   http.get(apiProjectsPath, () => {
-    if (takeAChance()) {
-      return HttpResponse.json(null, {
-        status: 504,
-      });
-    }
+    // if (takeAChance()) {
+    //   return HttpResponse.json(null, {
+    //     status: 504,
+    //   });
+    // }
 
     return HttpResponse.json(Array.from(projects.values()));
   }),
@@ -51,7 +51,20 @@ export const handlers = [
   }),
 
   http.post(apiProjectsPath, async ({ request }) => {
+    await delay(serverResponseTime());
     const project = await request.json();
+    
+    if (projects.get(project.id)) {
+      return HttpResponse.json(
+        {
+          error: 'Provided ID already exists',
+        },
+        {
+          status: 409,
+        }
+      );
+    }
+
     projects.set(project.id, project);
     return HttpResponse.json(project, { status: 201 });
   }),

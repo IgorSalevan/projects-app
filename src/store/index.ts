@@ -1,8 +1,8 @@
 import { FavouriteProjects, IProject } from '@/types';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { postRequestData } from '@/utils/api';
 import { StoreType } from './types';
-
 
 export const useStore = create<StoreType>()(
   devtools((set, get) => ({
@@ -16,6 +16,9 @@ export const useStore = create<StoreType>()(
     },
     setProjects: (data: IProject[], loaded = true) =>
       set({ projects: { data, loaded } }),
+    addProject: async (project: IProject & Record<string, unknown>) => {
+      return await postRequestData('projects', project);
+    },
     setFavourites: (data: FavouriteProjects, loaded = true) =>
       set({ favourites: { data, loaded } }),
     toggleFavourite: async (projectId: string) => {

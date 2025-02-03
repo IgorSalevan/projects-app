@@ -5,6 +5,9 @@ import { toast } from 'react-toastify';
 import { FC, useEffect } from 'react';
 import { useStore } from '@/store';
 import ProjectsTable from '@/components/ProjectsTable';
+import { useDetectMobile } from '@/hooks/useDetectMobile';
+import { CreateButton } from '@/components/Buttons/CreateButton';
+import { Box } from '@mui/material';
 
 interface IProps {
   projects: IProject[];
@@ -12,7 +15,8 @@ interface IProps {
 }
 
 const Projects: FC<IProps> = ({ projects: initProjects, error }) => {
-  const {setProjects, setMessage} = useStore((state) => state);
+  const isMobile = useDetectMobile();
+  const { setProjects, setMessage } = useStore((state) => state);
 
   useEffect(() => {
     setProjects(initProjects);
@@ -23,7 +27,16 @@ const Projects: FC<IProps> = ({ projects: initProjects, error }) => {
     }
   }, [initProjects, error]);
 
-  return <ProjectsTable />;
+  return (
+    <>
+      {!isMobile && (
+        <Box className='flex justify-end mb-8'>
+          <CreateButton />
+        </Box>
+      )}
+      <ProjectsTable />;
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
@@ -38,7 +51,6 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
       props: {
         projects,
       },
-      revalidate: 60,
     };
   } catch (error) {
     return {

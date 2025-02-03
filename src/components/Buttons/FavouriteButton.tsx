@@ -4,14 +4,14 @@ import { CircularProgress, IconButton } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useStore } from '@/store';
-import FavouriteIcon from './Icons/Favourite';
+import FavouriteIcon from '../Icons/Favourite';
 import { deleteRequestData, postRequestData } from '@/utils/api';
 
 interface IProps {
   projectId: string;
 }
 
-export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
+export const FavouriteBtton: FC<IProps> = ({ projectId }) => {
   const { favourites, toggleFavourite, setMessage } = useStore(
     (state) => state
   );
@@ -30,7 +30,6 @@ export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
     Promise.resolve()
       .then(() => {
         setLoaded(false);
-
         if (isFavourite) {
           return deleteRequestData(`favourites/${projectId}`);
         }
@@ -44,7 +43,7 @@ export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
       })
       .then(() => {
         setLoaded(true);
-        const message = `${
+        const message = `${projectId} ${
           isFavourite ? 'Removed from' : 'Added to'
         } Favourites`;
         toast.success(message);
@@ -62,10 +61,10 @@ export const ToggleFavouriteIcon: FC<IProps> = ({ projectId }) => {
   }
 
   return (
-    <IconButton onClick={handleToggle} disabled={!loaded} sx={{p: 0}}>
+    <IconButton onClick={handleToggle} disabled={!loaded} sx={{ p: 0 }}>
       <FavouriteIcon isFavourite={isFavourite} />
     </IconButton>
   );
 };
 
-export default ToggleFavouriteIcon;
+export default FavouriteBtton;

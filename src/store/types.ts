@@ -18,6 +18,7 @@ interface IStoreState {
 
 interface IStoreAction {
   setProjects: (projects: IProject[]) => void;
+  addProject: (project: IProject) => Promise<Response>;
   setFavourites: (favourites: FavouriteProjects) => void;
   toggleFavourite: (projectId: string) => Promise<StoreType>;
   setMessage: (message: string) => void;

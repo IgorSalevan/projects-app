@@ -20,14 +20,14 @@ export default function Layout({ children }: ILayoutProps) {
     if (message) {
       setMessage('');
     }
-  }, [message]);
+  }, [message, setMessage]);
 
   return (
     <div className="flex h-screen bg-white">
       <Sidebar />
       <Box
         component="main"
-        className="flex-1 pl-0 md:p-5 box-border"
+        className="flex-1 pl-0 md:p-6 box-border"
         sx={{ ml: isMobile ? 0 : 30 }}
       >
         {children}

@@ -10,8 +10,9 @@ import {
   SxProps,
 } from '@mui/material';
 import { Edit as EditIcon } from '@mui/icons-material';
+import { grey } from '@mui/material/colors';
 import { formatDate } from '@/utils/date';
-import ToggleFavouriteIcon from '../ToggleFavouriteIcon';
+import FavouriteButton from '../Buttons/FavouriteButton';
 
 const getCellSx = (minBreakpoint = 'sm', maxBreakpoint = 'md'): SxProps => ({
   display: {
@@ -22,7 +23,7 @@ const getCellSx = (minBreakpoint = 'sm', maxBreakpoint = 'md'): SxProps => ({
 
 const sxCell = getCellSx('xs', 'md');
 const sxCellId = getCellSx('xs', 'sm');
-const sxRow: SxProps = { backgroundColor: '#f5f5f5' };
+const sxRow: SxProps = { backgroundColor: grey[50] };
 
 import { IProjectsStoreSlice } from '@/store/types';
 
@@ -33,9 +34,9 @@ export interface IProps {
 
 const ProjectsTableMobile: FC<IProps> = ({ projects }) => (
   <TableContainer>
-    <Table size="small" sx={{ td: { borderBottom: '3px solid white' } }}>
+    <Table size='small' sx={{ 'td, th': { borderBottom: '3px solid white' } }}>
       <TableHead>
-        <TableRow sx={{ backgroundColor: '#e3e3e3' }}>
+        <TableRow sx={{ backgroundColor: grey[200] }}>
           <TableCell sx={sxCellId}>Project ID</TableCell>
           <TableCell>Project Name</TableCell>
           <TableCell sx={sxCell}>Start Date</TableCell>
@@ -57,8 +58,8 @@ const ProjectsTableMobile: FC<IProps> = ({ projects }) => (
               {formatDate(project.endDate)}
             </TableCell>
             <TableCell>{project.manager}</TableCell>
-            <TableCell padding="none" align="center">
-              <ToggleFavouriteIcon projectId={project.id} />
+            <TableCell padding='none' align='center'>
+              <FavouriteButton projectId={project.id} />
             </TableCell>
             <TableCell>
               <IconButton>
