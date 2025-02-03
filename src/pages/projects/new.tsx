@@ -11,7 +11,7 @@ import { useStore } from '@/store';
 import { IProject } from '@/types';
 import { ROUTES } from '@/utils/routes';
 import { Button } from '@/components/Buttons/Button';
-import { ProjectFormFields } from '@/components/ProjectFormFields';
+import { ProjectFormFields } from '@/components/FormProjectFields';
 
 const NewProject = () => {
   const router = useRouter();
@@ -40,7 +40,7 @@ const NewProject = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="xs:w-full lg:w-10/12 pt-12"
       >
-        <ProjectFormFields />
+        <ProjectFormFields mode='create' />
         <Box
           sx={{
             display: 'flex',

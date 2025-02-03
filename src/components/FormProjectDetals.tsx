@@ -1,19 +1,22 @@
 import { IProject } from '@/types';
 import { FC, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { ProjectFormFields } from './ProjectFormFields';
+import { ProjectFormFields } from './FormProjectFields';
 import { Box } from '@mui/material';
 import { Button } from './Buttons/Button';
 import { useRouter } from 'next/router';
 import { ROUTES } from '@/utils/routes';
 import FavouriteButton from './Buttons/FavouriteButton';
 import { useDetectMobile } from '@/hooks/useDetectMobile';
+import { ButtonEditProject } from './Buttons/ButtonEditProject';
 
 interface IProps {
-  project: IProject;
+  project?: IProject;
 }
 
-export const ProjectDetailsForm: FC<IProps> = ({ project }) => {
+export const FormProjectDetails: FC<IProps> = ({
+  project = {} as IProject,
+}) => {
   const isMobile = useDetectMobile();
   const router = useRouter();
   const methods = useForm({
@@ -26,16 +29,13 @@ export const ProjectDetailsForm: FC<IProps> = ({ project }) => {
     reset(project);
   }, [project.id]);
 
-  const handleBackClick = () => router.back();
-
-  const handleEditProject = (id: string) => () =>
-    router.push(ROUTES.editProject(id));
+  const handleBackClick = () => router.push(ROUTES.projects);
 
   return (
     <FormProvider {...methods}>
-      <Box display="flex">
-        <Box component="form" className="xs:w-full lg:w-10/12 pt-12">
-          <ProjectFormFields disabled />
+      <Box className="flex w-full">
+        <Box component="form" className="w-full lg:w-10/12 pt-12">
+          <ProjectFormFields mode='view' disabled />
 
           <Box
             sx={{
@@ -49,9 +49,7 @@ export const ProjectDetailsForm: FC<IProps> = ({ project }) => {
             <Button type="button" onClick={handleBackClick}>
               Back
             </Button>
-            <Button type="button" onClick={handleEditProject(project.id)}>
-              Edit
-            </Button>
+            <ButtonEditProject id={project.id} />
           </Box>
         </Box>
 

@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
+import { FormProjectContainer } from '@/components/FormProjectContainer';
+import { FormProjectEdit } from '@/components/FormProjectEdit';
 
-const EditProject = () => {
-  const router = useRouter();
-  const { projectId } = router.query;
-
-  return <>Edit Project ID {projectId}</>;
-};
+const EditProject = () => (
+    <FormProjectContainer>
+      <FormProjectEdit />
+    </FormProjectContainer>
+)
 
 export default EditProject;

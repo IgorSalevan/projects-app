@@ -73,6 +73,11 @@ export const handlers = [
     const { id } = params;
     const project = await request.json();
     projects.set(id, project);
+
+    if (favourites.has(project.id)) {
+      favourites.set(project.id, project);
+    }
+
     return HttpResponse.json(project, { status: 200 });
   }),
 

@@ -16,6 +16,7 @@ const FormTextField: FC<IProps> = ({
   label,
   fullWidth = false,
   required = true,
+  disabled = false,
   validator: pattern,
   ...props
 }) => {
@@ -31,6 +32,7 @@ const FormTextField: FC<IProps> = ({
         id={id}
         label={isMobile ? label : undefined}
         fullWidth={fullWidth}
+        disabled={disabled}
         {...(required
           ? register(id, { required: `${label} is required`, pattern })
           : register(id, { pattern }))}

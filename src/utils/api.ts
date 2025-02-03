@@ -9,22 +9,30 @@ export const fetchData = async (
 export const getRequestData = async (path: string): Promise<Response> =>
   await fetchData(path);
 
-export const postRequestData = async (
+const requestWithBody = async (
+  method: 'post' | 'put' | 'patch',
   path: string,
   body: BodyInit | Record<string, unknown>
 ): Promise<Response> =>
   await fetchData(path, {
-    method: 'post',
+    method,
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
   });
 
-  export const deleteRequestData = async (
-    path: string,
-  ): Promise<Response> =>
-    await fetchData(path, {
-      method: 'delete',
-    });
-  
+export const postRequestData = async (
+  path: string,
+  body: BodyInit | Record<string, unknown>
+): Promise<Response> => await requestWithBody('post', path, body);
+
+export const putRequestData = async (
+  path: string,
+  body: BodyInit | Record<string, unknown>
+): Promise<Response> => await requestWithBody('put', path, body);
+
+export const deleteRequestData = async (path: string): Promise<Response> =>
+  await fetchData(path, {
+    method: 'delete',
+  });

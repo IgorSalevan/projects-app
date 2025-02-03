@@ -11,7 +11,7 @@ import { DateTime } from 'luxon';
 interface IProps extends IFieldProps {
   format?: string;
   disableOpenPicker?: boolean;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 const FormFieldDatePicker: FC<IProps> = ({
@@ -32,36 +32,36 @@ const FormFieldDatePicker: FC<IProps> = ({
         <Controller
           name={id}
           control={control}
-          disabled
           rules={{
             required: required ? `${label} is required` : false,
           }}
           render={({ field, fieldState }) => (
-            <DatePicker
-              name={id}
-              label={isMobile ? label : undefined}
-              format={format}
-              value={field.value ? DateTime.fromISO(field.value) : null}
-              disableOpenPicker={isMobile ? disableOpenPicker : false}
-              disabled={disabled}
-              sx={{
-                ['& fieldset']: {
-                  borderRadius: 0,
-                },
-                input: {
-                  py: 1.5,
-                },
-              }}
-              onChange={(date) => field.onChange(date ? date.toISO() : null)}
-              slotProps={{
-                textField: {
-                  fullWidth,
-                  error: !!fieldState.error,
-                  helperText: fieldState.error?.message,
-                },
-              }}
-            />
-          )}
+              <DatePicker
+                name={id}
+                label={isMobile ? label : undefined}
+                format={format}
+                value={field.value ? DateTime.fromISO(field.value) : null}
+                disableOpenPicker={isMobile ? disableOpenPicker : false}
+                disabled={disabled}
+                sx={{
+                  ['& fieldset']: {
+                    borderRadius: 0,
+                  },
+                  input: {
+                    py: 1.5,
+                  },
+                }}
+                onChange={(date) => field.onChange(date ? date.toISO() : null)}
+                slotProps={{
+                  textField: {
+                    fullWidth,
+                    error: !!fieldState.error,
+                    helperText: fieldState.error?.message,
+                  },
+                }}
+              />
+            )
+          }
         />
       </FormFieldLabel>
     </LocalizationProvider>

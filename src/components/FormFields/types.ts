@@ -3,4 +3,5 @@ export interface IFieldProps {
   label: string;
   required?: boolean;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
