@@ -65,27 +65,33 @@ Each page-specific logic is placed in corresponding **modules** inside the `/src
  📂 src  
   ┣ 📂 components            # Reusable UI components  
   ┣ 📂 hooks                 # Custom React hooks  
-  ┃
   ┣ 📂 modules               # Page-specific logic modules  
   ┃ ┣ 📂 Projects            # Module for Projects (main) page /projects route  
   ┃ ┗ 📂 Project      
-  ┃   ┣ 📂 New               # Modle for creating a New Project /projects/new  
-  ┃   ┣ 📂 Details           # View project details, route /projects/:id
-  ┃   ┗ 📂 Edit              # Edit Project page, route /projects/:id/edit
-  ┃
+  ┃ ...  ┣ 📂 New               # Modle for creating a New Project /projects/new  
+  ┃ ...  ┣ 📂 Details           # View project details, route /projects/:id
+
+  ┃ ...  ┗ 📂 Edit              # Edit Project page, route /projects/:id/edit
+  
   ┣ 📂 pages                 # Next.js pages (routes)
+  
   ┃ ┣ 📂 projects
+  
   ┃ ┃ ┣ 📂 [projectId]
+  
   ┃ ┃ ┣ ┗ 📜 edit.tsx        # Edit Project
-  ┃ ┃ ┣ 📜 [projectId].tsx   # Project Details  
-  ┃ ┃ ┗ 📜 new..tsx          # Create New Project
+  
+  ┃ ┃ ┣ 📜 [projectId].tsx   # Project Details
+  
+  ┃ ┃ ┗ 📜 new.tsx           # Create New Project
+  
   ┃ ┗ projects.tsx           # Projects List
-  ┃
-  ┣ 📂 styles                # Global styles (Tailwind, MUI overrides)  
+  
   ┣ 📂 utils                 # Utility functions  
   ┗ 📂 store                 # Application state (Zustand) 
  
  📂 mock                     # Configuration files (e.g., API URLs)  
   ┣ 📜 data.json             # A mocked date in a json file 
+  
   ┗ 📜 handlers.js           # Handlers to process REST API requests
   
