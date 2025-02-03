@@ -33,7 +33,7 @@ export interface IProps {
   isMobile: boolean;
 }
 
-const ProjectsTableMobile: FC<IProps> = ({ projects }) => {
+const ProjectsTableComponent: FC<IProps> = ({ projects }) => {
   const router = useRouter();
 
   const handleViewProject = (id: string) => () =>
@@ -87,4 +87,4 @@ const ProjectsTableMobile: FC<IProps> = ({ projects }) => {
   );
 };
 
-export default ProjectsTableMobile;
+export default ProjectsTableComponent;

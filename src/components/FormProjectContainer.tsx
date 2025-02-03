@@ -24,7 +24,7 @@ export const FormProjectContainer: FC<IProps> = ({
       .then((response) => {
         if (!response.ok) {
           toast.error('Project not found');
-          router.push(ROUTES.projects);
+          return router.push(ROUTES.projects);
         }
         return response.json();
       })
