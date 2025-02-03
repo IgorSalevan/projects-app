@@ -1,10 +1,10 @@
-import { FormProjectContainer } from '@/components/FormProjectContainer';
-import { FormProjectDetails } from '@/modules/Project/Details/FormProjectDetals';
+import { ProjectFormContainer } from '@/components/ProjectFormContainer';
+import { ProjectDetailsForm } from '@/modules/Project/Details/ProjectDetalsForm';
 
 const ProjectDetails = () => (
-  <FormProjectContainer>
-    <FormProjectDetails />
-  </FormProjectContainer>
+  <ProjectFormContainer>
+    <ProjectDetailsForm />
+  </ProjectFormContainer>
 );
 
 export default ProjectDetails;

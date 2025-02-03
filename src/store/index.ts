@@ -24,15 +24,19 @@ export const useStore = create<StoreType>()(
 
       if (response.ok) {
         const favourites = get().favourites.data;
-        set({
-          favourites: {
-            data: {
-              ...favourites,
-              [project.id]: project
+
+        // Needs to update the project name in favourites as well 
+        if (project.id in favourites) {
+          set({
+            favourites: {
+              data: {
+                ...favourites,
+                [project.id]: project,
+              },
+              loaded: true,
             },
-            loaded: true
-          }
-        })
+          });
+        }
       }
       return response;
     },

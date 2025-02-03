@@ -14,7 +14,7 @@ interface IProps {
   error?: string;
 }
 
-const Projects: FC<IProps> = ({ projects: initProjects, error }) => {
+const ProjectsPage: FC<IProps> = ({ projects: initProjects, error }) => {
   const isMobile = useDetectMobile();
   const { setProjects, setMessage } = useStore((state) => state);
 
@@ -62,4 +62,4 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   }
 };
 
-export default Projects;
+export default ProjectsPage;

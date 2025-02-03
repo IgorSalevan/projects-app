@@ -10,7 +10,7 @@ interface IProps {
   children: ReactElement<{project?: IProject}>;
 }
 
-export const FormProjectContainer: FC<IProps> = ({
+export const ProjectFormContainer: FC<IProps> = ({
   children,
 }) => {
   const router = useRouter();

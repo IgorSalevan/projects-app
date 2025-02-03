@@ -1,10 +1,10 @@
-import { FormProjectEdit } from '@/modules/Project/Edit/FormProjectEdit';
-import { FormProjectContainer } from '@/components/FormProjectContainer';
+import { EditProjectForm } from '@/modules/Project/Edit/EditProjectForm';
+import { ProjectFormContainer } from '@/components/ProjectFormContainer';
 
-const EditProject = () => (
-    <FormProjectContainer>
-      <FormProjectEdit />
-    </FormProjectContainer>
-)
+const EditProjectPage = () => (
+  <ProjectFormContainer>
+    <EditProjectForm />
+  </ProjectFormContainer>
+);
 
-export default EditProject;
+export default EditProjectPage;
