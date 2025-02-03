@@ -10,7 +10,7 @@ interface IProps {
   children: ReactElement<{project?: IProject}>;
 }
 
-export const FormProjectContainer: FC<IProps> = ({
+export const ProjectFormContainer: FC<IProps> = ({
   children,
 }) => {
   const router = useRouter();
@@ -24,7 +24,7 @@ export const FormProjectContainer: FC<IProps> = ({
       .then((response) => {
         if (!response.ok) {
           toast.error('Project not found');
-          router.push(ROUTES.projects);
+          return router.push(ROUTES.projects);
         }
         return response.json();
       })

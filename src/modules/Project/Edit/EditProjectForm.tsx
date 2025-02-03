@@ -4,16 +4,17 @@ import { Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { BaseSyntheticEvent, FC, useEffect } from 'react';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import { ProjectFormFields } from '@/components/FormProjectFields';
+import { ProjectFormFields } from '@/components/ProjectFormFields';
 import { Button } from '@/components/Buttons/Button';
 import { toast } from 'react-toastify';
 import { useStore } from '@/store';
+import { FormButtonsContainer } from '@/components/Buttons/FormButtonsContainer';
 
 interface IProps {
   project?: IProject;
 }
 
-export const FormProjectEdit: FC<IProps> = ({ project = {} as IProject }) => {
+export const EditProjectForm: FC<IProps> = ({ project = {} as IProject }) => {
   const router = useRouter();
   const updateProject = useStore((state) => state.updateProject);
   const methods = useForm({
@@ -52,16 +53,9 @@ export const FormProjectEdit: FC<IProps> = ({ project = {} as IProject }) => {
         >
           <ProjectFormFields mode="edit" />
 
-          <Box
-            sx={{
-              display: 'flex',
-              mt: 3,
-              ml: { md: '11.2rem' },
-              justifyContent: { xs: 'center', md: 'flex-start' },
-            }}
-          >
+          <FormButtonsContainer>
             <Button type="submit">Update</Button>
-          </Box>
+          </FormButtonsContainer>
         </Box>
       </Box>
     </FormProvider>
