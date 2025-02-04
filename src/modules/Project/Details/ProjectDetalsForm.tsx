@@ -6,7 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { ProjectFormFields } from '@/components/ProjectFormFields';
 import { Button } from '@/components/Buttons/Button';
 import FavouriteButton from '@/components/Buttons/FavouriteButton';
-import { ButtonEditProject } from '@/components/Buttons/ButtonEditProject';
+import { EditButton } from '@/components/Buttons/EditButton';
 import { useDetectMobile } from '@/hooks/useDetectMobile';
 import { ROUTES } from '@/utils/routes';
 import { FormButtonsContainer } from '@/components/Buttons/FormButtonsContainer';
@@ -42,7 +42,7 @@ export const ProjectDetailsForm: FC<IProps> = ({
             <Button type="button" onClick={handleBackClick}>
               Back
             </Button>
-            <ButtonEditProject id={project.id} />
+            <EditButton id={project.id} />
           </FormButtonsContainer>
         </Box>
 

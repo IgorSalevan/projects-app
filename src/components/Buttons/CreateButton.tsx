@@ -18,7 +18,7 @@ export const CreateButton: FC<IProps> = ({ sx: sxMobile }) => {
 
   if (isMobile) {
     return (
-      <IconButton sx={sxMobile} onClick={handleAddNewProject}>
+      <IconButton sx={{...sxMobile, my: 0}} onClick={handleAddNewProject}>
         <AddIcon sx={{color: blue[700]}} />
       </IconButton>
     );

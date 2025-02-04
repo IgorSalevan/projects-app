@@ -53,7 +53,7 @@ export const FavouriteButton: FC<IProps> = ({ projectId }) => {
 
   if (!loaded) {
     return (
-      <Box width={40} display='flex' justifyContent='center' alignSelf='center'>
+      <Box width={40} display='flex' justifyContent='center' alignSelf='center' justifySelf='center'>
         <CircularProgress
           size={20}
         />
