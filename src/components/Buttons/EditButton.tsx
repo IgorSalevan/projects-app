@@ -7,7 +7,7 @@ interface IProps {
   id: string;
 }
 
-export const ButtonEditProject: FC<IProps> = ({ id }) => {
+export const EditButton: FC<IProps> = ({ id }) => {
   const router = useRouter();
 
   const handleEditProject = () => router.push(ROUTES.editProject(id));

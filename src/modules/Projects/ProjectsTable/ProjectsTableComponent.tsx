@@ -26,7 +26,7 @@ const sxRow: SxProps = { backgroundColor: grey[50] };
 import { IProjectsStoreSlice } from '@/store/types';
 import { ROUTES } from '@/utils/routes';
 import { useRouter } from 'next/router';
-import { ButtonEditProject } from '@/components/Buttons/ButtonEditProject';
+import { EditButton } from '@/components/Buttons/EditButton';
 
 export interface IProps {
   projects: IProjectsStoreSlice;
@@ -77,7 +77,7 @@ const ProjectsTableComponent: FC<IProps> = ({ projects }) => {
                 <FavouriteButton projectId={project.id} />
               </TableCell>
               <TableCell>
-                <ButtonEditProject id={project.id} />
+                <EditButton id={project.id} />
               </TableCell>
             </TableRow>
           ))}
